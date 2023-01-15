@@ -2,8 +2,14 @@
 *::before,
 *::after {
   box-sizing: border-box;
+ 
 }
-
+.checkBoxes{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 html,
 body,
 .wrapper {
@@ -17,7 +23,7 @@ body {
   background-color: #f9fbfd;
 }
 
-.wrapper {
+.container {
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
