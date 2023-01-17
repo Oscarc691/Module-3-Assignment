@@ -4,9 +4,9 @@ const characterAmountNumber = document.getElementById( 'characterAmountNumber')
 const includeUppercaseElement = document.getElementById('includeUppercase')
 const includeNumberElement = document.getElementById('includeNumber')
 const includeSymbolsElement =document.getElementById('includeSymbols')
-const form =document.getElementById('checkBoxes')
+const form = document.getElementById('checkBoxes')
 const password = document.getElementById('password')
-
+/*I had to concat everything seperately according to the chart so that it would read the correct digit.*/ 
 const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90)
 const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122)
 const NUMBER_CHAR_CODES = arrayFromLowToHigh(48, 57)
@@ -15,35 +15,42 @@ const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(
 ).concat(arrayFromLowToHigh(91, 96))
 .concat(arrayFromLowToHigh(123, 126)
 )
-
+/*  I had to do multiple concats for the symbols bevcause on the cart they are spread out so i couldnt just put one. */
 
 
 
 characterAmountNumber.addEventListener('input', syncCharacterAmount)
 characterAmountRange.addEventListener('input', syncCharacterAmount)
-
-form.addEventListener('submit', e => {
+/*i put e as the mouse event and had it prevent the screen from*/
+form.addEventListener('click', e => {
   e.preventDefault()
   const characterAmount = characterAmountNumber.value
   const includeUppercase = includeUppercaseElement.checked
   const includeNumber = includeNumberElement.checked
   const includeSymbols = includeSymbolsElement.checked
 
-  const password = generatePassword(characterAmount, includeUppercase, includeNumber, includeSymbols)
+  const password = generatePassword(
+    
+    characterAmount, 
+    includeUppercase, 
+    includeNumber, 
+    includeSymbols
+    )
   password.innerText = password
 })
 
 function generatePassword(characterAmount, includeUppercase, includeNumber, includeSymbols) {
   String.fromCharCode(65)
+  /*using a charcode is waaay cleaner than putting every digit individually*/
   let charCodes = LOWERCASE_CHAR_CODES
   if(includeUppercase) charCodes = charCodes.concat(UPPERCASE_CHAR_CODES)
   if (includeNumber) charCodes = charCodes.concat(NUMBER_CHAR_CODES)
   if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CHAR_CODES)
 
-  const passwordCharacters =[]
-  for (let i =0; i < characterAmount; i++) {
-    const characteCode = charCodes[Math.floor(Math.random() * charCodes.length)]
-      passwordCharacter.push(String.fromCharCode(characterCodes))
+  const passwordCharacters = []
+  for (let i = 0; i < characterAmount; i++) {
+    const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
+      passwordCharacters.push(String.fromCharCode(characterCodes))
   }
   return passwordCharacters.join('')
 }
@@ -63,5 +70,5 @@ function syncCharacterAmount(e) {
 
   
 }
-
-// Get references to the #generate element
+const generate = document.getElementById('generate')
+generate.addEventListener(click, )

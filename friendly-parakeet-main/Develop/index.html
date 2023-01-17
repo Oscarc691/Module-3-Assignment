@@ -25,7 +25,7 @@
         </div>
         <!--Ive set the maximum amount of characters to 15 because any more than that is unrealistic-->
         <!-- Ive also set all these checkboxes to add customization to the password generator.-->
-        <form class = "checkBoxes">
+        <form class = "checkBoxes" id ="checkboxes">
           <label for ="characterAmountNumber">Number of Characters</label>
           <input type="range" min="1" max="15" id ="characterAmountRange">
           <input type="number" min="1" max="15" id ="characterAmountNumber">
@@ -38,10 +38,11 @@
 
           <label for ="includeSymbols">Include Symbols</label>     
           <input type="checkbox" id="includSymbols">
+          <div class="card-footer">
+            <button id="Generate" class="btn">Generate Password</button>
+          </div>
         </form>
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
-        </div>
+        
       </div>
     </div>
     <script src="script.js" defer></script>
