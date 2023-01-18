@@ -1,8 +1,9 @@
 // Assignment code here
+/*i had to make new consts for every single variable in order to connect a function to it*/
 const characterAmountRange = document.getElementById( 'characterAmountRange')
 const characterAmountNumber = document.getElementById( 'characterAmountNumber')
 const includeUppercaseElement = document.getElementById('includeUppercase')
-const includeNumberElement = document.getElementById('includeNumber')
+const includeNumberElement = document.getElementById('includeNumbers')
 const includeSymbolsElement =document.getElementById('includeSymbols')
 const form = document.getElementById('checkBoxes')
 const password = document.getElementById('password')
@@ -22,21 +23,21 @@ const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(
 characterAmountNumber.addEventListener('input', syncCharacterAmount)
 characterAmountRange.addEventListener('input', syncCharacterAmount)
 /*i put e as the mouse event and had it prevent the screen from*/
-form.addEventListener('click', e => {
+form.addEventListener('submit', e => {
   e.preventDefault()
   const characterAmount = characterAmountNumber.value
   const includeUppercase = includeUppercaseElement.checked
   const includeNumber = includeNumberElement.checked
   const includeSymbols = includeSymbolsElement.checked
-
-  const password = generatePassword(
+/*this explains what kind of digits i want inside the generater*/
+  password.innerText = generatePassword(
     
     characterAmount, 
     includeUppercase, 
     includeNumber, 
     includeSymbols
     )
-  password.innerText = password
+  
 })
 
 function generatePassword(characterAmount, includeUppercase, includeNumber, includeSymbols) {
@@ -50,11 +51,11 @@ function generatePassword(characterAmount, includeUppercase, includeNumber, incl
   const passwordCharacters = []
   for (let i = 0; i < characterAmount; i++) {
     const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
-      passwordCharacters.push(String.fromCharCode(characterCodes))
+      passwordCharacters.push(String.fromCharCode(characterCode))
   }
   return passwordCharacters.join('')
 }
-
+/*i had the range go from low to high when i comes to the numbers connected to the symbols,letter, and number*/
 function arrayFromLowToHigh(low, high) {
   const array = []
   for (let i = low; i <= high; i++) {
@@ -70,5 +71,3 @@ function syncCharacterAmount(e) {
 
   
 }
-const generate = document.getElementById('generate')
-generate.addEventListener(click, )
